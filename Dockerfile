@@ -9,7 +9,7 @@ RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y xpra
 
 #From cocalc-docker
 # Microsoft's VS Code
-RUN apt-get update && apt-get install -y curl && apt-get clean && \
+RUN apt-get update && apt-get install -y curl git && apt-get clean && \
      curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg \
   && install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/ \
   && sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' \
@@ -17,9 +17,8 @@ RUN apt-get update && apt-get install -y curl && apt-get clean && \
   && apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y code
 
-RUN apt-get install -y libsecret-1-0 dbus-x11 gnome-keyring	
-
-RUN apt-get install -y texlive texlive-lang-german texlive-latex-extra latexmk
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y libsecret-1-0 dbus-x11 gnome-keyring && apt-get clean
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y texlive-full latexmk  && apt-get clean
 
 ADD vscode.sh /usr/local/bin/vscode
 RUN chmod +x /usr/local/bin/vscode

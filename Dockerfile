@@ -7,7 +7,7 @@ RUN apt update \
     && wget -q https://xpra.org/gpg.asc -O- | apt-key add -  \
     && cd /etc/apt/sources.list.d;wget https://xpra.org/repos/bionic/xpra.list  \
     && apt update  \
-    && DEBIAN_FRONTEND=noninteractive apt install --no-install-recommends -y xpra  \
+    && DEBIAN_FRONTEND=noninteractive apt install -y xpra  \
     && curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg \
     && install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/ \
     && sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' \

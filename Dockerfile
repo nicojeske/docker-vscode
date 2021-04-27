@@ -3,7 +3,7 @@ FROM jrei/systemd-ubuntu:18.04
 USER root
 
 RUN apt update \
-    && DEBIAN_FRONTEND=noninteractive apt install --no-install-recommends -y wget gnupg2 curl apt-transport-https libsecret-1-0 dbus-x11 gnome-keyring	  \
+    && DEBIAN_FRONTEND=noninteractive apt install --no-install-recommends -y wget gnupg2 curl apt-transport-https libsecret-1-0 dbus-x11 gnome-keyring ca-certificates	  \
     && wget -q https://xpra.org/gpg.asc -O- | apt-key add -  \
     && cd /etc/apt/sources.list.d;wget https://xpra.org/repos/bionic/xpra.list  \
     && apt update  \

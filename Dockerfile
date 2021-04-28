@@ -13,7 +13,7 @@ RUN apt update \
     && sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' \
     && apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y code \
-    && apt-get install --no-install-recommends -y texlive texlive-lang-german texlive-latex-extra latexmk \
+    && apt-get install --no-install-recommends -y texlive-full latexmk \
     && apt-get install --no-install-recommends -y xterm software-properties-common tasksel gnome-shell gnome-session gdm3 xdg-utils gnome-core \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
